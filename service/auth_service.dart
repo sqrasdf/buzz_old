@@ -1,4 +1,5 @@
 import 'package:buzz/service/database_service.dart';
+import 'package:buzz/service/shared_preferences_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
@@ -33,4 +34,16 @@ class AuthService {
   }
 
   // sign out
+  Future signOut() async {
+    try {
+      // remove data from shared preferences
+      await SharedPreferencesFunctions.saveUserLoggedInStatus(false);
+      await SharedPreferencesFunctions.saveUserName("");
+      await SharedPreferencesFunctions.saveUserEmail("");
+      // sign out
+      firebaseAuth.signOut();
+    } catch (e) {
+      return null;
+    }
+  }
 }

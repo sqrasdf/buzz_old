@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings
 
-import 'dart:math';
-
 import 'package:buzz/pages/home_page.dart';
 import 'package:buzz/pages/register_page.dart';
 import 'package:buzz/service/auth_service.dart';

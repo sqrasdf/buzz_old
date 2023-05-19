@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -56,6 +56,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
               width: 2,
             ),
           ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.red,
+              width: 2,
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(
+              color: Colors.red,
+              width: 3,
+            ),
+          ),
         ),
       ),
     );
@@ -85,4 +99,122 @@ void showAlertBox(context, message, color) {
       textColor: Colors.white,
     ),
   ));
+}
+
+class CustomContactView extends StatefulWidget {
+  final String title;
+  final String subtitle;
+  const CustomContactView({
+    super.key,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  State<CustomContactView> createState() => _CustomContactViewState();
+}
+
+class _CustomContactViewState extends State<CustomContactView> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
+      child: Column(
+        children: [
+          ListTile(
+            tileColor: Colors.grey[300],
+            leading: CircleAvatar(
+              minRadius: 30,
+              maxRadius: 30,
+              backgroundColor: Colors.grey[400],
+              backgroundImage: NetworkImage(
+                  'https://www.woolha.com/media/2020/03/eevee.png'),
+            ),
+            title: Text(
+              widget.title,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(widget.subtitle),
+          ),
+          Divider(
+            height: 2,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomContactView2 extends StatefulWidget {
+  const CustomContactView2({super.key});
+
+  @override
+  State<CustomContactView2> createState() => _CustomContactView2State();
+}
+
+class _CustomContactView2State extends State<CustomContactView2> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: GestureDetector(
+        onTap: () {},
+        child: AnimatedContainer(
+          duration: Duration(seconds: 1),
+          color: Colors.grey[300],
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 13,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: 35,
+                    // backgroundColor: Colors.grey[400],
+                    backgroundImage: NetworkImage(
+                        'https://www.woolha.com/media/2020/03/eevee.png'),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Shrek",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "some message hasdf sdfa fasd asdf asdf asdf asdf asdf sdere",
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [Text("11:24"), Icon(Icons.done)],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
